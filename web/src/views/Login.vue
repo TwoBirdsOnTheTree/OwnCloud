@@ -3,10 +3,12 @@
         <el-main class="maxWidth">
             <el-form ref="form" :model="form" label-width="80px">
                 <el-input v-model="form.userName"
+                          ref="userName"
                           placeholder="账号"
                           :class="'inputNoBorderBottomAndRadius'"
                 />
                 <el-input v-model="form.password"
+                          ref="password"
                           type="password"
                           placeholder="密码"
                           :class="'inputNoBorderTopRadius'"
@@ -27,6 +29,11 @@
 <script>
     export default {
         name: "login",
+
+        mounted() {
+            this.initInputBorder();
+        },
+
         data() {
             return {
                 form: {
@@ -38,6 +45,9 @@
         },
 
         methods: {
+            /**
+             * 点击登录
+             */
             login() {
                 let form = this.form;
                 if (!form.userName || form.userName.trim().length == 0) {
@@ -56,12 +66,36 @@
                 }, 500);
             },
 
+            /**
+             * 显示通知
+             * @param message
+             */
             loginErrorShowMessage(message) {
                 this.$notify({
                     title: '登录',
                     message: message,
                     type: 'error'
                 });
+            },
+
+            /**
+             * "账号"焦点变化时设置边框显示
+             */
+            initInputBorder() {
+                let userNameRef = this.$refs.userName;
+                let passwordRef = this.$refs.password;
+                let userNameInputDom = userNameRef.$el.querySelector('input');
+                let passwordInputDom = passwordRef.$el.querySelector('input');
+                userNameRef.$on('focus', () => {
+                    userNameInputDom.style.borderBottom = ''
+                    passwordInputDom.style.borderTop = 'unset'
+                });
+                userNameRef.$on('blur', () => {
+                    userNameInputDom.style.borderBottom = 'unset'
+                    passwordInputDom.style.borderTop = ''
+                });
+                // 默认不显示"账号"的下边框
+                userNameInputDom.style.borderBottom = 'unset'
             }
         }
     }
@@ -74,7 +108,6 @@
     }
 
     .inputNoBorderBottomAndRadius input {
-        border-bottom: none;
         border-bottom-left-radius: unset;
         border-bottom-right-radius: unset;
     }
