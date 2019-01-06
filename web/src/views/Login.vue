@@ -16,7 +16,7 @@
                 <el-button type="primary"
                            plain
                            @click="login"
-                           :class="'marginTop50'"
+                           class="marginTop10"
                            :loading="loading"
                 >
                     登录
@@ -50,11 +50,11 @@
              */
             login() {
                 let form = this.form;
-                if (!form.userName || form.userName.trim().length == 0) {
+                if (!form.userName || form.userName.trim().length === 0) {
                     this.loginErrorShowMessage('请输入账号');
                     return;
                 }
-                if (!form.password || form.password.trim().length == 0) {
+                if (!form.password || form.password.trim().length === 0) {
                     this.loginErrorShowMessage('请输入密码');
                     return;
                 }
@@ -87,15 +87,15 @@
                 let userNameInputDom = userNameRef.$el.querySelector('input');
                 let passwordInputDom = passwordRef.$el.querySelector('input');
                 userNameRef.$on('focus', () => {
-                    userNameInputDom.style.borderBottom = ''
+                    userNameInputDom.style.borderBottom = '';
                     passwordInputDom.style.borderTop = 'unset'
                 });
                 userNameRef.$on('blur', () => {
-                    userNameInputDom.style.borderBottom = 'unset'
-                    passwordInputDom.style.borderTop = ''
+                    userNameInputDom.style.borderBottom = 'unset';
+                    passwordInputDom.style.borderTop = '';
                 });
                 // 默认不显示"账号"的下边框
-                userNameInputDom.style.borderBottom = 'unset'
+                userNameInputDom.style.borderBottom = 'unset';
             }
         }
     }
@@ -114,7 +114,7 @@
 </style>
 
 <style scoped>
-    .marginTop50 {
+    .marginTop10 {
         margin-top: 10px;
     }
 
