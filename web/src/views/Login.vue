@@ -5,13 +5,13 @@
                 <el-input v-model="form.userName"
                           ref="userName"
                           placeholder="账号"
-                          :class="'inputNoBorderBottomAndRadius'"
+                          class="inputNoBorderBottomAndRadius"
                 />
                 <el-input v-model="form.password"
                           ref="password"
                           type="password"
                           placeholder="密码"
-                          :class="'inputNoBorderTopRadius'"
+                          class="inputNoBorderTopRadius"
                 />
                 <el-button type="primary"
                            plain
@@ -64,6 +64,15 @@
                 setTimeout(() => {
                     this.loading = false;
                 }, 500);
+
+                //TODO 待
+                if ('1' == '1')
+                    return;
+
+                fetch('')
+                    .then((response) => {
+
+                    });
             },
 
             /**
