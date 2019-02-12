@@ -11,12 +11,10 @@ import javax.servlet.http.HttpServletRequest;
  * 文件Controller
  */
 @RestController
-@RequestMapping("file")
+@RequestMapping("/file")
 public class FileController {
     /**
      * 显示本文件夹下文件列表, 不递归
-     *
-     * @return 文件列表
      */
     @RequestMapping("/fileList")
     public String fileList(HttpServletRequest request) {

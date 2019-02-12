@@ -3,6 +3,10 @@ package com.mycloud.entity;
 import com.mycloud.util.FileUtil;
 
 import java.io.File;
+import java.time.Instant;
+import java.time.LocalDateTime;
+import java.time.ZoneId;
+import java.util.Date;
 
 /**
  * 文件类
@@ -13,8 +17,12 @@ public class MyFile {
     // 文件大小
     private long fileSize;
     // 文件路径
-    // 是显示的文件路径, 去掉了${global.baseFilePath}
+    // 是显示的文件路径, 即去掉了${global.baseFilePath}
     private String filePath;
+    // 修改时间
+    private LocalDateTime modifiedTime;
+    // 是否是文件夹
+    private boolean ifDirectory;
 
     /**
      * 将 java.io.File 转换为 MyFile
@@ -32,6 +40,9 @@ public class MyFile {
             filePath = File.separator + filePath;
         }
         myFile.setFilePath(filePath);
+        Instant instant = new Date(file.lastModified()).toInstant();
+        myFile.setModifiedTime(LocalDateTime.ofInstant(instant, ZoneId.systemDefault()));
+        myFile.setIfDirectory(file.isDirectory());
         return myFile;
     }
 
@@ -57,5 +68,21 @@ public class MyFile {
 
     public void setFilePath(String filePath) {
         this.filePath = filePath;
+    }
+
+    public LocalDateTime getModifiedTime() {
+        return modifiedTime;
+    }
+
+    public void setModifiedTime(LocalDateTime modifiedTime) {
+        this.modifiedTime = modifiedTime;
+    }
+
+    public boolean isIfDirectory() {
+        return ifDirectory;
+    }
+
+    public void setIfDirectory(boolean ifDirectory) {
+        this.ifDirectory = ifDirectory;
     }
 }

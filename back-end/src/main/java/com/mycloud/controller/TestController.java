@@ -6,16 +6,14 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 /**
- * for test controller
+ * 测试
  */
 @RestController
 @RequestMapping("/test")
 public class TestController extends BaseController {
 
     /**
-     * for test
-     *
-     * @return string
+     * 测试
      */
     @RequestMapping("/*")
     public String test() {

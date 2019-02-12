@@ -29,7 +29,7 @@ public class FileUtil {
         if (null == filePath) {
             filePath = "";
         }
-        // 去除开始的文件分隔符
+        // 去除filePath开始的文件分隔符
         if (filePath.startsWith(File.separator)) {
             filePath = filePath.substring(1);
         }
@@ -43,10 +43,16 @@ public class FileUtil {
             return Collections.EMPTY_LIST;
         }
         File[] subFiles = file.listFiles();
+        if (subFiles == null) {
+            return Collections.EMPTY_LIST;
+        }
         return toMyFiles(Arrays.asList(subFiles));
     }
 
     private static List<MyFile> toMyFiles(List<File> files) {
+        if (null == files) {
+            return Collections.EMPTY_LIST;
+        }
         List<MyFile> myFiles = new ArrayList<>(files.size());
         for (File file : files) {
             myFiles.add(MyFile.toMyFile(file));
