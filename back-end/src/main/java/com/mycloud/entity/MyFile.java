@@ -1,5 +1,6 @@
 package com.mycloud.entity;
 
+import com.alibaba.fastjson.JSON;
 import com.mycloud.util.FileUtil;
 
 import java.io.File;
@@ -44,6 +45,11 @@ public class MyFile {
         myFile.setModifiedTime(LocalDateTime.ofInstant(instant, ZoneId.systemDefault()));
         myFile.setIfDirectory(file.isDirectory());
         return myFile;
+    }
+
+    @Override
+    public String toString() {
+        return JSON.toJSONString(this);
     }
 
     public String getFileName() {
