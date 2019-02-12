@@ -13,6 +13,9 @@ import org.springframework.web.context.request.ServletRequestAttributes;
 
 import javax.servlet.http.HttpServletRequest;
 
+/**
+ * Controller层切面AOP
+ */
 @Aspect
 @Component
 public class ControllerAspect {
