@@ -1,4 +1,4 @@
-package com.owncloud.util;
+package com.mycloud.util;
 
 /**
  * 缓存
