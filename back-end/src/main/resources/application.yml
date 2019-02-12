@@ -1,2 +1,4 @@
 server:
   port: 8188
+global:
+  baseFilePath: 'C:\Users\test\Desktop'
