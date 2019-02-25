@@ -118,7 +118,9 @@ public class FileController {
         response.setHeader("Content-Type", contentType);
         // 这里文件名换你想要的，inline表示浏览器直接实用（我方便测试用的）
         // 参考资料：http://hw1287789687.iteye.com/blog/2188500
-        String contentDisposition = String.format("attachment;filename=\"%s\"", downloadFile.getName());
+        // 文件名需要转码, 负责中文文件名会乱码
+        String saveFileName = new String(fileName.getBytes("UTF-8"), "ISO-8859-1");
+        String contentDisposition = String.format("attachment;filename=\"%s\"", saveFileName);
         response.setHeader("Content-Disposition", contentDisposition);
         response.setHeader("Content-Length", String.valueOf(contentLength));
         // 坑爹地方三：Content-Range，格式为
