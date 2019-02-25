@@ -15,7 +15,7 @@
         created() {
             this.$axios.get('file/fileList?filePath=chat')
                 .then((response) => {
-                    test = response;
+                    this.test = response;
                     console.log(response);
                 });
         }
