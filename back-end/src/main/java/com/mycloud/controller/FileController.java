@@ -158,7 +158,6 @@ public class FileController {
             //
             outputStream.flush();
             response.flushBuffer();
-            randomAccessFile.close();
             System.out.println("下载完毕：" + startByte + "-" + endByte + "：" + transmitted);
         } catch (ClientAbortException e) {
             // 捕获此异常表示用户停止下载
