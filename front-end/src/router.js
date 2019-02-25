@@ -18,6 +18,11 @@ export default new Router({
             component: Login
         },
         {
+            path: '/Disk',
+            name: 'disk',
+            component: () => import('./views/Disk.vue')
+        },
+        {
             path: '/about',
             name: 'about',
             // route level code-splitting
