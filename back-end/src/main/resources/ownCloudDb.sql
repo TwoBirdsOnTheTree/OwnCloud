@@ -10,6 +10,7 @@ CREATE TABLE [t_file](
   [CreateDate] TIMESTAMP NOT NULL DEFAULT (DATETIME ()), -- 创建日期
   [UpdateDate] TIMESTAMP NOT NULL DEFAULT (DATETIME ()), -- 更新日期
   [MD5] varchar(50), -- 文件MD5值
+  [Password] varchar(50), -- 文件密码
   [FileRemark] VARCHAR(500));-- 文件备注
 
 CREATE UNIQUE INDEX [pk_index_t_file]
