@@ -170,7 +170,7 @@ public class FileController {
                 if (null != outputStream) {
                     outputStream.close();
                 }
-                if (randomAccessFile != null) {
+                if (null != randomAccessFile) {
                     randomAccessFile.close();
                 }
             } catch (IOException e) {
