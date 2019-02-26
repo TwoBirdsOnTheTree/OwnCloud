@@ -62,7 +62,7 @@ public class InitController extends BaseController {
         InputStream inputStream = null;
         try {
             inputStream = InitController.class.getResourceAsStream("/ownCloudDb.sql");
-            StringBuffer sqlFileStringBuffer = new StringBuffer();
+            StringBuilder sqlFileStringBuffer = new StringBuilder();
             byte[] bytes = new byte[512];
             for (int readBytesLength = 0; (readBytesLength = inputStream.read(bytes)) > 0; ) {
                 sqlFileStringBuffer.append(new String(bytes, 0, readBytesLength));
