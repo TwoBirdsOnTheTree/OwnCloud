@@ -1,7 +1,7 @@
 <script>
-  import { isDef } from 'element-ui/src/utils/shared';
-  import scrollIntoView from 'element-ui/src/utils/scroll-into-view';
-  import { generateId } from 'element-ui/src/utils/util';
+  import { isDef } from '../../../src/utils/shared';
+  import scrollIntoView from '../../../src/utils/scroll-into-view';
+  import { generateId } from '../../../src/utils/util';
 
   const copyArray = (arr, props) => {
     if (!arr || !Array.isArray(arr) || !props) return arr;

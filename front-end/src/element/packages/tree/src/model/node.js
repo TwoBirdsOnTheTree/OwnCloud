@@ -1,4 +1,4 @@
-import objectAssign from '/src/element/src/utils/merge';
+import objectAssign from '../../../../src/utils/merge';
 import { markNodeData, NODE_KEY } from './util';
 
 export const getChildState = node => {

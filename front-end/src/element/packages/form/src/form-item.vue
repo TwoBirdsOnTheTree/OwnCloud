@@ -36,9 +36,9 @@
 </template>
 <script>
   import AsyncValidator from 'async-validator';
-  import emitter from '/src/element/src/mixins/emitter';
-  import objectAssign from '/src/element/src/utils/merge';
-  import { noop, getPropByPath } from '/src/element/src/utils/util';
+  import emitter from '../../../src/mixins/emitter';
+  import objectAssign from '../../../src/utils/merge';
+  import { noop, getPropByPath } from '../../../src/utils/util';
 
   export default {
     name: 'ElFormItem',

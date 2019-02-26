@@ -339,6 +339,7 @@
       return fecha;
     });
   } else {
-    main.fecha = fecha;
+    if (main)
+      main.fecha = fecha;
   }
 })(this);

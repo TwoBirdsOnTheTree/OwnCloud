@@ -10,7 +10,7 @@
 </template>
 
 <script>
-import Migrating from '/src/element/src/mixins/migrating';
+import Migrating from '../../../src/mixins/migrating';
 
 export default {
   name: 'ElSteps',

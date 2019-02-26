@@ -33,8 +33,8 @@
 
 <script>
   import { getFirstDayOfMonth, getDayCountOfMonth, getWeekNumber, getStartDateOfMonth, prevDate, nextDate, isDate, clearTime as _clearTime} from '../util';
-  import Locale from '/src/element/src/mixins/locale';
-  import { arrayFindIndex, arrayFind, coerceTruthyValueToArray } from '/src/element/src/utils/util';
+  import Locale from '../../../../src/mixins/locale';
+  import { arrayFindIndex, arrayFind, coerceTruthyValueToArray } from '../../../../src/utils/util';
 
   const WEEKS = ['sun', 'mon', 'tue', 'wed', 'thu', 'fri', 'sat'];
   const getDateTimestamp = function(time) {

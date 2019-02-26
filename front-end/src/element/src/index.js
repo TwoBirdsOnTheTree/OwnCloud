@@ -71,8 +71,8 @@ import Main from '../packages/main/index.js';
 import Footer from '../packages/footer/index.js';
 import Timeline from '../packages/timeline/index.js';
 import TimelineItem from '../packages/timeline-item/index.js';
-import locale from 'element-ui/src/locale';
-import CollapseTransition from 'element-ui/src/transitions/collapse-transition';
+import locale from '../src/locale';
+import CollapseTransition from '../src/transitions/collapse-transition';
 
 const components = [
   Pagination,

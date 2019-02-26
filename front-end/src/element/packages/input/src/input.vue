@@ -102,10 +102,10 @@
   </div>
 </template>
 <script>
-  import emitter from '/src/element/src/mixins/emitter';
-  import Migrating from '/src/element/src/mixins/migrating';
+  import emitter from '../../../src/mixins/emitter';
+  import Migrating from '../../../src/mixins/migrating';
   import calcTextareaHeight from './calcTextareaHeight';
-  import merge from '/src/element/src/utils/merge';
+  import merge from '../../../src/utils/merge';
 
   export default {
     name: 'ElInput',

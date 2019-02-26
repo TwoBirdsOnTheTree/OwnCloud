@@ -33,8 +33,8 @@
 </template>
 
 <script>
-  import { hasClass } from '/src/element/src/utils/dom';
-  import Migrating from '/src/element/src/mixins/migrating';
+  import { hasClass } from '../../../src/utils/dom';
+  import Migrating from '../../../src/mixins/migrating';
 
   export default {
     name: 'ElRate',

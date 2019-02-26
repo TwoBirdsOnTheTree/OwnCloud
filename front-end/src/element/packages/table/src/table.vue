@@ -213,12 +213,12 @@
 </template>
 
 <script type="text/babel">
-  import ElCheckbox from 'element-ui/packages/checkbox';
+  import ElCheckbox from '../../checkbox';
   import debounce from 'throttle-debounce/debounce';
-  import { addResizeListener, removeResizeListener } from '/src/element/src/utils/resize-event';
-  import Mousewheel from '/src/element/src/directives/mousewheel';
-  import Locale from '/src/element/src/mixins/locale';
-  import Migrating from '/src/element/src/mixins/migrating';
+  import { addResizeListener, removeResizeListener } from '../../../src/utils/resize-event';
+  import Mousewheel from '../../../src/directives/mousewheel';
+  import Locale from '../../../src/mixins/locale';
+  import Migrating from '../../../src/mixins/migrating';
   import TableStore from './table-store';
   import TableLayout from './table-layout';
   import TableBody from './table-body';

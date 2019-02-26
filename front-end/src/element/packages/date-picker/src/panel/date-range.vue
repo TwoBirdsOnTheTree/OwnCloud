@@ -200,12 +200,14 @@
     extractDateFormat,
     extractTimeFormat
   } from '../util';
-  import Clickoutside from '/src/element/src/utils/clickoutside';
-  import Locale from '/src/element/src/mixins/locale';
+  import Clickoutside from '../../../../src/utils/clickoutside';
+  import Locale from '../../../../src/mixins/locale';
   import TimePicker from './time';
   import DateTable from '../basic/date-table';
-  import ElInput from 'element-ui/packages/input';
-  import ElButton from 'element-ui/packages/button';
+  // import ElInput from '../../../input';
+  // import ElInput from '/element/packages/input/index.js';
+  import ElInput from '../../../input/index.js';
+  import ElButton from '../../../button';
 
   const advanceDate = (date, amount) => {
     return new Date(new Date(date).getTime() + amount);

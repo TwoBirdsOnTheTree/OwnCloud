@@ -1,5 +1,5 @@
-import dateUtil from '/src/element/src/utils/date';
-import { t } from '/src/element/src/locale';
+import dateUtil from '../../../../src/utils/date';
+import { t } from '../../../../src/locale';
 
 const weeks = ['sun', 'mon', 'tue', 'wed', 'thu', 'fri', 'sat'];
 const months = ['jan', 'feb', 'mar', 'apr', 'may', 'jun', 'jul', 'aug', 'sep', 'oct', 'nov', 'dec'];
@@ -43,7 +43,8 @@ export const formatDate = function(date, format) {
 };
 
 export const parseDate = function(string, format) {
-  return dateUtil.parse(string, format || 'yyyy-MM-dd', getI18nSettings());
+  if (dateUtil)
+    return dateUtil.parse(string, format || 'yyyy-MM-dd', getI18nSettings());
 };
 
 export const getDayCountOfMonth = function(year, month) {

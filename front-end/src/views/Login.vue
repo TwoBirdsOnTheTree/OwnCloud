@@ -27,10 +27,14 @@
 </template>
 
 <script>
+    import Vue from 'vue';
+    import element from '../element/src/index.js';
+    element.install(Vue);
     import ElMain from '../element/packages/main/index.js';
     import ElForm from '../element/packages/form/index.js';
     import ElInput from '../element/packages/input/index.js';
     import ElButton from '../element/packages/button/index.js';
+    // import objectAssign from '../../../src/utils/merge.js';
 
     export default {
         name: "login",
@@ -145,9 +149,6 @@
     }
 </style>
 
-<style lang="sass" scoped>
-    @import '../element/packages/theme-chalk/src/main.scss'
-    @import '../element/packages/theme-chalk/src/form.scss'
-    @import '../element/packages/theme-chalk/src/input.scss'
-    @import '../element/packages/theme-chalk/src/button.scss'
+<style lang="sass">
+    @import '../element/packages/theme-chalk/src/index.scss'
 </style>

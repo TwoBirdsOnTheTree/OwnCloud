@@ -48,10 +48,10 @@
 </template>
 
 <script type="text/babel">
-  import Locale from '/src/element/src/mixins/locale';
+  import Locale from '../../../../src/mixins/locale';
   import { isDate, range, getDayCountOfMonth, nextDate } from '../util';
-  import { hasClass } from '/src/element/src/utils/dom';
-  import { arrayFindIndex, coerceTruthyValueToArray } from '/src/element/src/utils/util';
+  import { hasClass } from '../../../../src/utils/dom';
+  import { arrayFindIndex, coerceTruthyValueToArray } from '../../../../src/utils/util';
 
   const datesInMonth = (year, month) => {
     const numOfDays = getDayCountOfMonth(year, month);
