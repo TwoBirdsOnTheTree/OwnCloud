@@ -27,8 +27,20 @@
 </template>
 
 <script>
+    import ElMain from '../element/packages/main/index.js';
+    import ElForm from '../element/packages/form/index.js';
+    import ElInput from '../element/packages/input/index.js';
+    import ElButton from '../element/packages/button/index.js';
+
     export default {
         name: "login",
+
+        components: {
+            'el-main': ElMain,
+            'el-form': ElForm,
+            'el-input': ElInput,
+            'el-button': ElButton,
+        },
 
         mounted() {
             this.initInputBorder();
@@ -131,4 +143,11 @@
         display: inline-table;
         max-width: 350px;
     }
+</style>
+
+<style lang="sass" scoped>
+    @import '../element/packages/theme-chalk/src/main.scss'
+    @import '../element/packages/theme-chalk/src/form.scss'
+    @import '../element/packages/theme-chalk/src/input.scss'
+    @import '../element/packages/theme-chalk/src/button.scss'
 </style>
