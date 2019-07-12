@@ -35,7 +35,7 @@ public class FileController {
      * @param request  request
      * @param response response
      */
-    @RequestMapping("download")
+    @RequestMapping("/download")
     public void download(HttpServletRequest request, HttpServletResponse response) {
         try {
             String filePath = request.getParameter("filePath");
@@ -48,7 +48,7 @@ public class FileController {
             if (file.isFile()) {
                 downloadFile(request, response, file);
             } else if (file.isDirectory()) {
-                // 打包
+                //TODO 打包
                 // archiveFile();
                 File archiveFile = null;
                 downloadFile(request, response, archiveFile);
@@ -146,8 +146,6 @@ public class FileController {
             while ((transmitted + len) <= contentLength && (len = randomAccessFile.read(buff)) != -1) {
                 outputStream.write(buff, 0, len);
                 transmitted += len;
-                //TODO 停一下，方便测试，用的时候删了就行了
-                // Thread.sleep(10);
             }
             // 处理不足buff.length部分
             if (transmitted < contentLength) {
