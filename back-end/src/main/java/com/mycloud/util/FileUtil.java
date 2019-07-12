@@ -10,10 +10,12 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
+import java.util.stream.Collectors;
 
 /**
  * 文件工具类
  */
+@SuppressWarnings("unchecked")
 @Component
 public class FileUtil {
     //
@@ -53,11 +55,9 @@ public class FileUtil {
         if (null == files) {
             return Collections.EMPTY_LIST;
         }
-        List<MyFile> myFiles = new ArrayList<>(files.size());
-        for (File file : files) {
-            myFiles.add(MyFile.toMyFile(file));
-        }
-        return myFiles;
+        return files.parallelStream()
+                .map(MyFile::toMyFile)
+                .collect(Collectors.toList());
     }
 
     @Value("${global.baseFilePath}")
