@@ -5,6 +5,8 @@ import DateUtil from './DateUtil.js';
  * @type {MyFile}
  */
 let MyFile = class {
+    // 文件Id
+    fileId = null;
     // 文件名
     fileName = null;
     // 文件大小

@@ -12,14 +12,13 @@ public class CacheUtil {
 
     private static boolean hasStartCleanCacheThread = false;
 
-    static class CacheKey implements Delayed {
+    private static class CacheKey implements Delayed {
         LocalDateTime expireTime;
 
         String cacheKey;
 
         @Override
         public long getDelay(TimeUnit unit) {
-            //TODO 还得检查
             return unit.convert(this.expireTime.getNano(), unit);
         }
 
@@ -29,14 +28,15 @@ public class CacheUtil {
         }
     }
 
-    // 并发?
     private static final ConcurrentHashMap<String, Object> cacheMap = new ConcurrentHashMap<>();
-    private static final DelayQueue<CacheKey> delayQueue = new DelayQueue<CacheKey>();
+    private static final DelayQueue<CacheKey> delayQueue = new DelayQueue<>();
 
+    /**
+     * 开启清除线程
+     */
     private static void startCleanCacheThread() {
         Executor exec = Executors.newSingleThreadExecutor();
         exec.execute(() -> {
-            //noinspection InfiniteLoopStatement
             while (true) {
                 try {
                     CacheKey take = delayQueue.take();
@@ -50,11 +50,11 @@ public class CacheUtil {
     }
 
     // 并发?
-    // 先 synchronized 约束下
+    //TODO 先 synchronized 约束下? 需要吗
     public synchronized static void put(String key, Object obj, long expireInTime) {
         //
         cacheMap.put(key, obj);
-        // delayQueue
+        // 清除线程
         CacheKey cache = new CacheKey();
         cache.cacheKey = key;
         cache.expireTime = null;
@@ -65,5 +65,21 @@ public class CacheUtil {
         }
     }
 
-
+    /**
+     * get
+     * @param key
+     * @param resultClass
+     * @param <T>
+     * @return
+     */
+    public static <T> T get(String key, Class<T> resultClass) {
+        Object get = cacheMap.get(key);
+        if (null == get) {
+            return null;
+        }
+        if (resultClass.isAssignableFrom(get.getClass())) {
+            return resultClass.cast(get);
+        }
+        return null;
+    }
 }

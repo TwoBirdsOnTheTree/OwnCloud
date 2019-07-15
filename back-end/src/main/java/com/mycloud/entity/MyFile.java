@@ -1,18 +1,23 @@
 package com.mycloud.entity;
 
 import com.alibaba.fastjson.JSON;
+import com.mycloud.util.CacheUtil;
 import com.mycloud.util.FileUtil;
+import com.mycloud.util.StringUtils;
 
 import java.io.File;
 import java.time.Instant;
 import java.time.LocalDateTime;
 import java.time.ZoneId;
 import java.util.Date;
+import java.util.UUID;
 
 /**
  * 文件类
  */
 public class MyFile {
+    // 文件Id
+    private String fileId;
     // 文件名
     private String fileName;
     // 文件大小
@@ -44,6 +49,15 @@ public class MyFile {
         Instant instant = new Date(file.lastModified()).toInstant();
         myFile.setModifiedTime(LocalDateTime.ofInstant(instant, ZoneId.systemDefault()));
         myFile.setIfDirectory(file.isDirectory());
+        // 文件Id
+        String cacheFileId = CacheUtil.get(myFile.getFilePath(), String.class);
+        if (StringUtils.isStringNotEmpty(cacheFileId)) {
+            myFile.setFileId(cacheFileId);
+        } else {
+            String fileId = UUID.randomUUID().toString().toLowerCase();
+            myFile.setFileId(fileId);
+            // CacheUtil.put(myFile.getFilePath(), fileId, null);
+        }
         return myFile;
     }
 
@@ -90,5 +104,13 @@ public class MyFile {
 
     public void setIfDirectory(boolean ifDirectory) {
         this.ifDirectory = ifDirectory;
+    }
+
+    public String getFileId() {
+        return fileId;
+    }
+
+    public void setFileId(String fileId) {
+        this.fileId = fileId;
     }
 }

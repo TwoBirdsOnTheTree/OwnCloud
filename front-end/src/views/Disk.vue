@@ -7,7 +7,11 @@
                     label="名称"
                     width="180">
                 <template slot-scope="scope">
-                    {{scope.row.fileName}}
+                    <a href="javascript:void(0)" title="Hello World" class="tit"
+                       @click="click($event, scope.row)"
+                    >
+                        {{scope.row.fileName}}
+                    </a>
                 </template>
             </el-table-column>
             <el-table-column
@@ -58,6 +62,7 @@
         name: "Disk",
         data() {
             return {
+                nowFilePath: null,
                 myFileList: null,
                 config: {
                     sortName: '',
@@ -68,7 +73,10 @@
         },
 
         created() {
-            this.$axios.get('file/fileList?filePath=')
+            this.$axios.post('file/fileList',
+                {
+                    filePath: null
+                })
                 .then(response => {
                     let list = null;
                     if (response && response.data) {
@@ -86,6 +94,15 @@
         },
 
         methods: {
+            click(event, file) {
+                console.log(`event: ${event}, file: ${file}`);
+                if (file.ifDirectory) {
+                    this.$router.push("/disk?filePath=");
+                } else {
+
+                }
+            },
+
             download(file) {
                 let filePath = file.filePath;
                 // 将字符\替换为/, 否则请求报错
